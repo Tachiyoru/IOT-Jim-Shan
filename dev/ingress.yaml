@@ -5,12 +5,13 @@ metadata:
   labels:
     app: argocd
   annotations:
-    ingress.kubernetes.io/ssl-redirect: "false"
+    nginx.ingress.kubernetes.io/rewrite-target: /
 spec:
   rules:
-  - http:
+  - host: localhost
+    http:
       paths:
-      - path: /argocd
+      - path: /
         pathType: Prefix
         backend:
           service:
